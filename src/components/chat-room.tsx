@@ -1,26 +1,16 @@
-import { FirebaseApp } from "firebase/app";
-import {
-  query,
-  orderBy,
-  limit,
-  setDoc,
-  doc,
-  addDoc,
-  serverTimestamp,
-} from "firebase/firestore";
 import {
   collection,
   CollectionReference,
   DocumentData,
   Firestore,
-  getFirestore,
+  getFirestore, limit, orderBy, query
 } from "firebase/firestore";
-
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useAuthContext } from "../providers/AuthContext";
 import { ChatInput } from "./chat-input";
 import { ChatMessage } from "./chat-message";
 import { ScrollToMe } from "./scrollToMe";
+
 
 export const ChatRoom = () => {
   const { app } = useAuthContext();

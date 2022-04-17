@@ -1,7 +1,7 @@
+import "./App.css";
+import { Landing } from "./components/landing";
 import { SignOut } from "./components/signout";
 import { AuthProvider } from "./providers/AuthProvider";
-import { Landing } from "./components/landing";
-import "./App.css";
 
 function App() {
   return (

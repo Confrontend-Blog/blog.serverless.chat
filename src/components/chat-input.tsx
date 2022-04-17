@@ -7,7 +7,7 @@ import {
   getFirestore,
   serverTimestamp,
 } from "firebase/firestore";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useAuthContext } from "../providers/AuthContext";
 
 export const ChatInput = () => {

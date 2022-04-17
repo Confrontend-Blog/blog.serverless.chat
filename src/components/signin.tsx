@@ -1,7 +1,5 @@
 import {
-  signInWithPopup,
-  GoogleAuthProvider,
-  signInAnonymously,
+  GoogleAuthProvider, signInWithPopup
 } from "firebase/auth";
 import { useAuthContext } from "../providers/AuthContext";
 

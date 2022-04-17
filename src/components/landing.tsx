@@ -1,6 +1,5 @@
 import { useAuthContext } from "../providers/AuthContext";
 import { ChatRoom } from "./chat-room";
-import { ScrollToMe } from "./scrollToMe";
 import { SignIn } from "./signin";
 
 export const Landing = () => {

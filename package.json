@@ -23,13 +23,33 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npm run lint:es && npm run lint:style && npm run lint:types",
+    "lint:fix": "npm run lint:es:fix && npm run lint:style:fix && npm run lint:types",
+    "lint:es": "eslint . --max-warnings=0",
+    "lint:es:fix": "npm run lint:es -- --fix",
+    "lint:style": "stylelint \"(!(components/resources/templates/**/*|resources/cpg/**/*|storybook-static/**/*|resources/cmp/**/*))**/*.{ts,tsx,js,jsx,!storybook}\"",
+    "lint:style:fix": "npm run lint:style -- --fix",
+    "lint:types": "tsc --project tsconfig.json"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "no-unused-vars": "off",
+      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-vars": [
+        "warn",
+        {
+          "vars": "all",
+          "varsIgnorePattern": "^_",
+          "args": "after-used",
+          "argsIgnorePattern": "^_"
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -42,5 +62,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "8.13.0",
+    "eslint-plugin-unused-imports": "2.0.0"
   }
 }

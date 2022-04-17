@@ -1,3 +1,6 @@
+/**
+ * Dummy Element to Scroll to on parent change
+ */
 import { useRef } from "react";
 import { useEffect } from "react";
 
