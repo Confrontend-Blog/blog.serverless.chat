@@ -3,8 +3,6 @@ import { AuthProvider } from "./providers/AuthProvider";
 import { Landing } from "./components/landing";
 import "./App.css";
 
-// const db = getFirestore(app);
-
 function App() {
   return (
     <AuthProvider>
@@ -12,9 +10,9 @@ function App() {
         <header>
           <SignOut />
         </header>
-        <section>
+        <main>
           <Landing />
-        </section>
+        </main>
       </div>
     </AuthProvider>
   );
