@@ -12,6 +12,7 @@ function AuthProvider(props: { children?: React.ReactNode }): JSX.Element {
     storageBucket: "chatly-c9a51.appspot.com",
     messagingSenderId: "214812458830",
     appId: "1:214812458830:web:94d4ac8acc4ff21fdd281f",
+    measurementId: "G-7YT5G0PF0K"
   });
 
   const auth: Auth = getAuth(app);
