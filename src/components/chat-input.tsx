@@ -42,6 +42,11 @@ export const ChatInput = () => {
   return (
     <>
       <form onSubmit={sendMessage}>
+        <img
+          className="chat-avatar"
+          src={process.env.PUBLIC_URL + "/emoji_emotions_white_24dp.svg"}
+          alt=""
+        />
         <input
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
