@@ -8,14 +8,8 @@ export const ChatMessage = ({ message }: { message: DocumentData }) => {
   const messageClass = uid === auth?.currentUser?.uid ? "sent" : "received";
 
   return (
-    <>
-      <div className={`message ${messageClass}`}>
-        <img
-          alt="avatar"
-          src={photoURL || process.env.PUBLIC_URL + "/avatar.png"}
-        />
-        <p>{text}</p>
-      </div>
-    </>
+    <div className={`message ${messageClass}`}>
+      <p>{text}</p>
+    </div>
   );
 };

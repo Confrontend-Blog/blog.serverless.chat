@@ -11,7 +11,7 @@ body {
 }
 
 .App header {
-  background-color: #181717;
+  background-color: #3957b7;
   height: 10vh;
   min-height: 50px;
   color: white;
@@ -33,7 +33,7 @@ main {
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  background-color: #3957b7;
+  background-color: #fff;
 }
 
 main::-webkit-scrollbar {
@@ -129,13 +129,13 @@ p {
 }
 
 .sent p {
-  color: white;
-  background: #6888d0;
+  color: black;
+  background: #d1cccc;
   align-self: flex-end;
 }
 .received p {
-  background: #e5e5ea;
-  color: black;
+  color: white;
+  background: #3957b7;
 }
 
 img {
