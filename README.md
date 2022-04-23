@@ -27,12 +27,6 @@ An in-depth paragraph about your project and overview of use.
 code blocks for commands
 ```
 
-### Dev Scripts
-
-The following helper scripts are located in `./scripts`:
-
-- `icons.js`:
-
 ### Documentation
 
 - [jsdoc](https://www.npmjs.com/package/jsdoc)
@@ -42,6 +36,10 @@ The following helper scripts are located in `./scripts`:
 ```
 "docs": "jsdoc -c jsdoc.conf.json"
 ```
+
+### Styling
+
+- [svgr](https://react-svgr.com/docs/options/)
 
 ## Help
 
