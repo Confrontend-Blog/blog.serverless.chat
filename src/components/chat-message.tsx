@@ -2,7 +2,7 @@ import { DocumentData } from "firebase/firestore";
 import { useAuthContext } from "../providers/AuthContext";
 
 export const ChatMessage = ({ message }: { message: DocumentData }) => {
-  const { text, uid, photoURL } = message;
+  const { text, uid } = message;
   const { auth } = useAuthContext();
 
   const messageClass = uid === auth?.currentUser?.uid ? "sent" : "received";

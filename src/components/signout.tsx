@@ -1,6 +1,6 @@
 import { useAuthContext } from "../providers/AuthContext";
 
-export const SignOut = () => {
+export const SignOut = (): JSX.Element | null => {
   const { auth } = useAuthContext();
   return (
     auth.currentUser && (

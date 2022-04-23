@@ -9,7 +9,16 @@ import {
 } from "firebase/firestore";
 import { FormEvent, useState } from "react";
 import { useAuthContext } from "../providers/AuthContext";
+import { SvgIcon } from "./svg-icon";
 
+/**
+ * ChatInput is input component for typing and sending a message.
+ * @component
+ * @example
+ * return (
+ *   <ChatInput />
+ * )
+ */
 export const ChatInput = () => {
   const { auth, app } = useAuthContext();
   const [formValue, setFormValue] = useState("");
@@ -42,18 +51,16 @@ export const ChatInput = () => {
   return (
     <>
       <form onSubmit={sendMessage}>
-        <img
-          className="chat-avatar"
-          src={process.env.PUBLIC_URL + "/emoji_emotions_white_24dp.svg"}
-          alt=""
-        />
+        <SvgIcon type={"EmojiEmotionsWhite24Dp"} />
         <input
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
           placeholder="say something nice"
         />
 
-        <button type="submit" disabled={!formValue}></button>
+        <button type="submit" disabled={!formValue}>
+          <SvgIcon className="send-svg" type={"Send"} />
+        </button>
       </form>
     </>
   );

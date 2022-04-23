@@ -1,23 +1,13 @@
-import "./App.css";
+import "./App.scss";
+import Header from "./components/header";
 import { Landing } from "./components/landing";
-// import { SignOut } from "./components/signout";
 import { AuthProvider } from "./providers/AuthProvider";
 
 function App() {
   return (
     <AuthProvider>
       <div className="App">
-        <header>
-          {/* <SignOut /> */}
-          <img className='chat-avatar'
-            src={process.env.PUBLIC_URL + "/account_circle_white_24dp.svg"}
-            alt=""
-          />
-          <div className="chat-title-wrapper">
-            <span className="chat-title">Group Chat</span>
-            <span className="chat-online-status">online</span>
-          </div>
-        </header>
+        <Header></Header>
         <main>
           <Landing />
         </main>
