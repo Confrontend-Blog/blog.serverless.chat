@@ -1,10 +1,9 @@
 import { FirebaseApp, initializeApp } from "firebase/app";
 import { Auth, getAuth } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 function FirebaseInit() {
   const app: FirebaseApp = initializeApp({
-    apiKey: "AIzaSyDNngK5b3zlQjACrJwBdBEZgkPSktpsHXA",
+    apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "blog-chat-firebase.firebaseapp.com",
     projectId: "blog-chat-firebase",
     storageBucket: "blog-chat-firebase.appspot.com",
@@ -13,12 +12,8 @@ function FirebaseInit() {
   });
 
   const auth: Auth = getAuth(app);
-  const [user, loading, error] = useAuthState(auth);
 
   return {
-    user,
-    loading,
-    error,
     auth,
     app,
   };

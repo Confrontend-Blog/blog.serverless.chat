@@ -8,10 +8,13 @@ import {
 import { Store } from "..";
 import { generateId } from "../utils/string-utils";
 
-const db = getFirestore(Store.app);
-
 export async function getMessages(sender: string, receiver: string) {
   try {
+    if (!Store.app) {
+      throw new Error("No Firebase App");
+    }
+
+    const db = getFirestore(Store.app);
     // Create a unique chat ID based on the sender and receiver
     const chatId = generateId(sender, receiver);
 

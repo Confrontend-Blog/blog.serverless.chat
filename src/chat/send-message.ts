@@ -2,14 +2,16 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { Store } from "..";
 import { generateId } from "../utils/string-utils";
 
-const db = getFirestore(Store.app);
-
 export async function sendMessage(
   sender: string,
   receiver: string,
   message: string
 ) {
   try {
+    if (!Store.app) {
+      throw new Error("No Firebase App");
+    }
+    const db = getFirestore(Store.app);
     // Create a unique chat ID based on the sender and receiver
     const chatId = generateId(sender, receiver);
 
