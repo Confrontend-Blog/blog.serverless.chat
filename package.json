@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack serve --mode development",
     "start:prod": "serve -s dist",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
     "firebase": "^9.21.0",
