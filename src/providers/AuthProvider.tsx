@@ -6,13 +6,12 @@ import { AuthContext } from "./AuthContext";
 
 function AuthProvider(props: { children?: React.ReactNode }): JSX.Element {
   const app: FirebaseApp = initializeApp({
-    apiKey: "AIzaSyCsQ2YbBj9MxNQ6P-qyeCDU_u8HZ4OgCJw",
-    authDomain: "chatly-c9a51.firebaseapp.com",
-    projectId: "chatly-c9a51",
-    storageBucket: "chatly-c9a51.appspot.com",
-    messagingSenderId: "214812458830",
-    appId: "1:214812458830:web:94d4ac8acc4ff21fdd281f",
-    measurementId: "G-7YT5G0PF0K"
+    apiKey: "AIzaSyDNngK5b3zlQjACrJwBdBEZgkPSktpsHXA",
+    authDomain: "blog-chat-firebase.firebaseapp.com",
+    projectId: "blog-chat-firebase",
+    storageBucket: "blog-chat-firebase.appspot.com",
+    messagingSenderId: "381881514314",
+    appId: "1:381881514314:web:0c3bbde0e7d838577a69b3",
   });
 
   const auth: Auth = getAuth(app);

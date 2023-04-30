@@ -1,5 +1,7 @@
 import {
-  GoogleAuthProvider, signInWithPopup
+  Auth,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useAuthContext } from "../providers/AuthContext";
 
@@ -11,8 +13,7 @@ export const SignIn = () => {
     signInWithGoogle = () => {
       const provider = new GoogleAuthProvider();
 
-      signInWithPopup(auth, provider);
-
+      signIn(auth);
       //TODO
       /**
        * enable guest sign in :
@@ -31,3 +32,11 @@ export const SignIn = () => {
     </button>
   );
 };
+
+async function signIn(auth: Auth) {
+  await signInWithEmailAndPassword(
+    auth,
+    "hamed.sign+admin@gmail.com",
+    "iq34LP99mFBGyux7"
+  );
+}
