@@ -1,8 +1,9 @@
 {
-  "name": "@Confrontend/chatly",
-  "version": "1.0.4",
+  "name": "@confrontend/chatly",
+  "version": "1.0.5",
   "description": "A headless chat package using firebase",
   "main": "dist/bundle.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "webpack serve --mode development",
     "start:prod": "serve -s dist",
