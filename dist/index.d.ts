@@ -1,3 +1,7 @@
+export * from "./chat/get-messages";
+export * from "./chat/send-message";
+export * from "./config/firebase";
+export * from "./utils/string-utils";
 import { FirebaseApp } from "firebase/app";
 import { Auth } from "firebase/auth";
 export interface IStore {

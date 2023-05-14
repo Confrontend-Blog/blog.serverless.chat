@@ -1,3 +1,8 @@
+export * from "./chat/get-messages";
+export * from "./chat/send-message";
+export * from "./config/firebase";
+export * from "./utils/string-utils";
+
 import { FirebaseInit as bootstrap } from "./config/firebase";
 import { FirebaseApp } from "firebase/app";
 import { Auth, User } from "firebase/auth";
