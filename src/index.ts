@@ -1,19 +1,14 @@
 export * from "./chat/get-messages";
 export * from "./chat/send-message";
-export * from "./config/firebase";
 export * from "./utils/string-utils";
 
-import { FirebaseInit as bootstrap } from "./config/firebase";
-import { FirebaseApp } from "firebase/app";
-import { Auth, User } from "firebase/auth";
+import { FirebaseApp, FirebaseOptions, initializeApp } from "firebase/app";
+import { Firestore, getFirestore } from "firebase/firestore";
 
-export interface IStore {
-  auth: Auth | null;
-  app: FirebaseApp | null;
+export let db: Firestore;
+export let app: FirebaseApp;
+
+export function initializeFirebase(config: FirebaseOptions) {
+  app = initializeApp(config);
+  db = getFirestore(app);
 }
-
-/**
- * Initialize Firebase App and assigns auth data (see IStore)
- * to a global Store.
- */
-export const Store: IStore = bootstrap();

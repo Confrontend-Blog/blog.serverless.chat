@@ -21,7 +21,7 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js"],
   },
-  plugins: [new BundleAnalyzerPlugin()],
+  // plugins: [new BundleAnalyzerPlugin()],
   externals: [
     /^firebase\//, // Matches any module starting with 'firebase/'
   ],
