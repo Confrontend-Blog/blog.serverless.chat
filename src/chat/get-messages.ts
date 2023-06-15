@@ -8,7 +8,10 @@ import {
 import { Message, app, db } from "..";
 import { generateId } from "../utils/string-utils";
 
-export async function getMessages(sender: string, receiver: string) {
+export async function getMessages(
+  sender: string,
+  receiver: string
+): Promise<Message[] | []> {
   try {
     if (!app) {
       throw new Error("No Firebase App");
