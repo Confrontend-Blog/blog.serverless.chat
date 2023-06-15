@@ -5,7 +5,7 @@ import { generateId } from "../utils/string-utils";
 export async function sendMessage(
   sender: string,
   receiver: string,
-  message: string
+  text: string
 ) {
   try {
     if (!app) {
@@ -17,7 +17,7 @@ export async function sendMessage(
     // Add the message to the chat collection
     await addDoc(collection(db, "chats", chatId, "messages"), {
       sender,
-      message,
+      text,
       timestamp: new Date(),
     });
   } catch (e) {

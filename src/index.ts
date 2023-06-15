@@ -9,6 +9,13 @@ import { getAuth, signInWithCustomToken } from "firebase/auth";
 export let db: Firestore;
 export let app: FirebaseApp;
 
+export type Message = {
+  id?: string;
+  text: string;
+  sender: string;
+  timestamp: { seconds: number; nanoseconds: number };
+};
+
 export function initializeFirebase(
   config: FirebaseOptions,
   firebaseToken: string

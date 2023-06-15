@@ -5,7 +5,7 @@ import {
   orderBy,
   getDocs,
 } from "firebase/firestore";
-import { app, db } from "..";
+import { Message, app, db } from "..";
 import { generateId } from "../utils/string-utils";
 
 export async function getMessages(sender: string, receiver: string) {
@@ -23,7 +23,15 @@ export async function getMessages(sender: string, receiver: string) {
       orderBy("timestamp")
     );
     const messageSnapshots = await getDocs(messagesQuery);
-    const messages = messageSnapshots.docs.map((doc) => doc.data());
+    const messages = messageSnapshots.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        text: data.text,
+        sender: data.sender,
+        timestamp: data.timestamp,
+      } as Message;
+    });
 
     return messages;
   } catch (e) {
