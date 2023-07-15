@@ -1,5 +1,5 @@
-export * from "./chat/get-messages";
-export * from "./chat/send-message";
+export * from "./messages/get-messages";
+export * from "./messages/create-message";
 export * from "./utils/string-utils";
 
 import { FirebaseApp, FirebaseOptions, initializeApp } from "firebase/app";

@@ -6,24 +6,22 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { Message, app, db } from "..";
-import { generateId } from "../utils/string-utils";
+import { schema } from "../utils/firestore-data";
 
-export async function getMessages(
-  sender: string,
-  receiver: string
-): Promise<Message[] | []> {
+export async function getMessages(chatId: string): Promise<Message[] | []> {
   try {
     if (!app) {
       throw new Error("No Firebase App");
     }
 
-    // Create a unique chat ID based on the sender and receiver
-    const chatId = generateId(sender, receiver);
-
     // Get all the messages for this chat
+    // TODO pagination
     const messagesQuery = query(
-      collection(db, "chats", chatId, "messages"),
-      orderBy("timestamp")
+      collection(db, schema.COLLECTIONS.CHATS.NAME, chatId, "members"),
+      orderBy(
+        schema.COLLECTIONS.CHATS.DOCUMENTS.SUB_COLLECTIONS.MESSAGES.FIELDS
+          .TIMESTAMP
+      )
     );
     const messageSnapshots = await getDocs(messagesQuery);
     const messages = messageSnapshots.docs.map((doc) => {
@@ -35,6 +33,8 @@ export async function getMessages(
         timestamp: data.timestamp,
       } as Message;
     });
+
+    console.log(messages);
 
     return messages;
   } catch (e) {

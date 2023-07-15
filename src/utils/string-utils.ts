@@ -3,7 +3,11 @@ export const toLowerCaseNoSpaces = (str: string) => {
 };
 
 export const generateId = (sender: string, receiver: string) => {
-    const senderFormatted = toLowerCaseNoSpaces(sender);
-    const receiverFormatted = toLowerCaseNoSpaces(receiver);
-    return [senderFormatted, receiverFormatted].sort().join("-");
+  const senderFormatted = toLowerCaseNoSpaces(sender);
+  const receiverFormatted = toLowerCaseNoSpaces(receiver);
+  return [senderFormatted, receiverFormatted].sort().join("-");
+};
+
+export const extractIds = (chatId: string): string[] => {
+  return chatId.split("-");
 };
