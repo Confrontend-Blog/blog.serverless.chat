@@ -5,6 +5,7 @@
   "main": "dist/bundle.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "start:dev": "ts-node src/index.dev.ts",
     "start": "webpack serve --mode development",
     "start:prod": "serve -s dist",
     "build": "webpack --mode production",
@@ -18,6 +19,7 @@
     "firebase": "^9.21.0",
     "serve": "^13.0.2",
     "ts-loader": "^9.2.6",
+    "ts-node": "^10.9.1",
     "typescript": "^4.5.4",
     "webpack": "^5.65.0",
     "webpack-bundle-analyzer": "^4.8.0",
