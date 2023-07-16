@@ -7,7 +7,9 @@ type CreateMessageParams = {
   message: Message;
   members: [string, string];
 };
-
+/**
+ * Add messages to already existing chat.
+ */
 export async function createMessage({ message, members }: CreateMessageParams) {
   try {
     if (!app) {
@@ -36,6 +38,8 @@ export async function createMessage({ message, members }: CreateMessageParams) {
       // overview list.
       await updateDoc(doc(chatsRef, existingChatId), {
         [schema.COLLECTIONS.CHATS.DOCUMENTS.LAST_MESSAGE]: message.text,
+        [schema.COLLECTIONS.CHATS.DOCUMENTS.LAST_MESSAGE_TIMESTAMP]:
+          message.timestamp,
       });
     } else {
       // TODO handle non-ideal state

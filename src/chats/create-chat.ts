@@ -24,8 +24,11 @@ export async function createChat({ message, members }: CreateChatParams) {
     } else {
       // Chat does not exist, create a new one
       const chatId = generateId(members[0], members[1]);
+
       await setDoc(doc(chatsRef, chatId), {
         [schema.COLLECTIONS.CHATS.DOCUMENTS.LAST_MESSAGE]: message.text,
+        [schema.COLLECTIONS.CHATS.DOCUMENTS.LAST_MESSAGE_TIMESTAMP]:
+          message.timestamp,
       });
       // Add a new message to the messages sub-collection
       await addDoc(

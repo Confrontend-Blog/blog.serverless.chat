@@ -10,64 +10,47 @@ import {
   collectionGroup,
 } from "firebase/firestore";
 import { Message, app, db } from "..";
+import { schema } from "../utils/firestore-data";
 
-type GetUserChatsParams = {
-  googleId: string;
+type ChatOverview = {
+  receiverGoogleId: string;
+  lastMessage: string;
+  timestamp: string;
 };
 
 export async function getUserChats({
   googleId,
-}: GetUserChatsParams): Promise<any> {
+}: {
+  googleId: string;
+}): Promise<any> {
   try {
-    console.log(1);
-
     if (!app) {
-      throw new Error("No Firebase App");
+      throw new Error("No Firebase App getUserChats");
     }
 
-    console.log(2);
+    const chatsRef = collection(db, schema.COLLECTIONS.CHATS.NAME);
+    const querySnapshot = await getDocs(chatsRef);
 
-    // Placeholder for all chat messages
-    // const allChats: { [chatId: string]: Message | null } = {};
-
-    // const messagesQuery = query(
-    //   collectionGroup(db, "messages"),
-    //   orderBy("timestamp")
-    // );
-    // const messagesSnap = await getDocs(messagesQuery);
-    // const messages = messagesSnap.docs.map((doc) => doc.data());
-
-    // console.log(messages);
-
-    // return allChats;
-
-    const chatsSnapshot = await getDocs(collection(db, "chats"));
-
-    const chats = await Promise.all(
-      chatsSnapshot.docs.map(async (chatDoc) => {
-        const chatId = chatDoc.id;
-        const participants = chatDoc.data().participants;
-        const messagesSnapshot = await getDocs(
-          query(
-            collection(db, `chats/${chatId}/messages`),
-            orderBy("timestamp", "desc"),
-            limit(1)
-          )
-        );
-        const lastMessage = messagesSnapshot.docs[0].data();
-        console.log(lastMessage);
-
+    const chatOverviews: ChatOverview[] = querySnapshot.docs
+      .filter((doc) => doc.id.includes(googleId))
+      .map((doc) => {
         return {
-          id: chatId,
-          participants,
-          lastMessage,
+          receiverGoogleId: doc.id,
+          lastMessage:
+            doc.data()[schema.COLLECTIONS.CHATS.DOCUMENTS.LAST_MESSAGE],
+          timestamp:
+            doc.data()[
+              schema.COLLECTIONS.CHATS.DOCUMENTS.LAST_MESSAGE_TIMESTAMP
+            ],
         };
-      })
-    );
+      });
 
-    console.log(chats);
+    return chatOverviews;
   } catch (e) {
-    console.error("Error in getAllChats while getting chats:", e);
-    return {};
+    console.error(
+      "Error in getChatOverviews while fetching chat overviews:",
+      e
+    );
+    return [];
   }
 }

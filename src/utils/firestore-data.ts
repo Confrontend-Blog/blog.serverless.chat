@@ -4,6 +4,7 @@ export const schema = {
       NAME: "chats",
       DOCUMENTS: {
         LAST_MESSAGE: "last_message",
+        LAST_MESSAGE_TIMESTAMP: "last_message_timestamp",
         SUB_COLLECTIONS: {
           MESSAGES: {
             NAME: "messages",
